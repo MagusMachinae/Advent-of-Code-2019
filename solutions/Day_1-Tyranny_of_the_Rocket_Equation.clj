@@ -1,10 +1,11 @@
 (ns solutions.day_1)
 
+
 (def module-masses [95249
                     126697
                     77237
-                    80994
                     91186
+                    80994
                     53823
                     115101
                     130919
@@ -102,10 +103,22 @@
                     93518])
 
 
+
 (defn module-fuel-req [m]
   (- (quot m 3) 2))
 
 (def answer_1
   (reduce + (map module-fuel-req module-masses)))
 
-(defn module-fuel-req-wet)
+(defn module-fuel-req-wet [m]
+
+  (loop [fuel-mass (- (quot m 3) 2)
+         wet-mass 0]
+
+    (if (> 0 fuel-mass)
+      wet-mass
+      (recur
+        (- (quot fuel-mass 3) 2)
+        (+ wet-mass fuel-mass)))))
+(module-fuel-req-wet 100756)
+(def answer_2 (reduce + (map module-fuel-req-wet module-masses)))
