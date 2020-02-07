@@ -1,4 +1,4 @@
-(ns solutions.day_1)
+(ns src.day_1)
 
 
 (def module-masses [95249
